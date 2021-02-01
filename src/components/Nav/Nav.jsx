@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import styled, { css } from 'styled-components';
 import Logo from '../Logo/Logo';
 import NavItem from '../NavItem/NavItem';
-
+import * as dropdownitem from './dropdownItems'
 const Section = styled.div`
   width: 100%;
   padding-top: 40px;
@@ -102,22 +102,22 @@ const Nav = ({ children, position, fixed }) => {
       <NavWrapper fixed={navFixed}>
         <NavItemsWrapper position="left" fixed={navFixed}>
           <NavList>
-            <NavItem to="#" fixed={navFixed}>
+            <NavItem to="#" fixed={navFixed} dropdownItems={dropdownitem.dropdown1}>
               360 Planner
             </NavItem>
-            <NavItem fixed={navFixed}>HER</NavItem>
-            <NavItem fixed={navFixed}>HIM</NavItem>
-            <NavItem fixed={navFixed}>THE WEDDING</NavItem>
+            <NavItem fixed={navFixed} dropdownItems={dropdownitem.dropdown2}>HER</NavItem>
+            <NavItem fixed={navFixed} dropdownItems={dropdownitem.dropdown3}>HIM</NavItem>
+            <NavItem fixed={navFixed} dropdownItems={dropdownitem.dropdown4}>THE WEDDING</NavItem>
           </NavList>
         </NavItemsWrapper>
         <Logo fixed={navFixed} />
         <NavItemsWrapper position="right" fixed={navFixed}>
           <NavList>
-            <NavItem to="#" fixed={navFixed}>
+            <NavItem to="#" fixed={navFixed} dropdownItems={dropdownitem.dropdown5}>
               VENDORS
             </NavItem>
-            <NavItem fixed={navFixed}>GALLERY</NavItem>
-            <NavItem fixed={navFixed}>IDEAS & MORE</NavItem>
+            <NavItem fixed={navFixed} dropdownItems={dropdownitem.dropdown6}>GALLERY</NavItem>
+            <NavItem fixed={navFixed} dropdownItems={dropdownitem.dropdown7}>IDEAS & MORE</NavItem>
           </NavList>
         </NavItemsWrapper>
       </NavWrapper>

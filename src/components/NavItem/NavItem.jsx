@@ -1,7 +1,8 @@
-import React from 'react';
+import React,{useState} from 'react';
 import { Link } from 'react-router-dom';
 import styled, { css } from 'styled-components';
 import { LinkStyle } from '../../styled/sharedStyles';
+import Dropdown from '../Dropdown/Dropdown';
 
 const Item = styled.li`
   position: relative;
@@ -22,10 +23,27 @@ const ItemLink = styled(Link)`
   ${LinkStyle}
 `;
 
-const NavItem = ({ path, children, fixed }) => {
+const NavItem = ({ path, children, fixed, dropdownItems }) => {
+  const [dropdown, setDropdown] = useState(false)
+   const onMouseEnter = () => {
+    if (window.innerWidth < 960) {
+      setDropdown(false);
+    } else {
+      setDropdown(true);
+    }
+  };
+
+  const onMouseLeave = () => {
+    if (window.innerWidth < 960) {
+      setDropdown(false);
+    } else {
+      setDropdown(false);
+    }
+  };
   return (
-    <Item fixed={fixed}>
+    <Item onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave} fixed={fixed}>
       <ItemLink to={path}>{children}</ItemLink>
+      {dropdown && <Dropdown items={dropdownItems}/>}
     </Item>
   );
 };
