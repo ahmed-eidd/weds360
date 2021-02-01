@@ -1,15 +1,16 @@
 import logo from './logo.svg';
-import {useDispatch} from 'react-redux'
-import { fetchGallery} from './store/gallery/slice'
+import { useDispatch } from 'react-redux';
+import { fetchGallery } from './store/gallery/slice';
 import './App.css';
-import Routes from './routes/routes'
+import Routes from './routes/routes';
+import Layout from './components/Layout/Layout';
 
 function App() {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   return (
-    <div className="App">
-      <Routes/>
-    </div>
+    <Layout>
+      <Routes />
+    </Layout>
   );
 }
 

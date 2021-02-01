@@ -5,13 +5,14 @@ import './index.css';
 import App from './App';
 import store from './service/configureStore';
 import { BrowserRouter as Router } from 'react-router-dom';
-
+import GlobalStyle from './styled/globalStyles';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
       <Router>
+        <GlobalStyle />
         <App />
       </Router>
     </Provider>
