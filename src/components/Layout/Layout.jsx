@@ -3,11 +3,11 @@ import Footer from '../Footer/Footer';
 import Nav from '../Nav/Nav';
 import WeddingSection from '../WeddingSection/WeddingSection';
 
-const Layout = ({ chidlren }) => {
+const Layout = ({ children }) => {
   return (
     <div>
       <Nav />
-      {chidlren}
+      {children}
       <WeddingSection/>
       <Footer />
     </div>

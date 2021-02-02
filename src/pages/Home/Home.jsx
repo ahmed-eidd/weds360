@@ -1,18 +1,20 @@
-import React, {useEffect} from 'react'
-import { useSelector, useDispatch} from 'react-redux'
-import { fetchGallery} from '../../store/gallery/slice'
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import Gallery from '../../components/Gallery/Gallery';
+import SinglePhoto from '../../components/Gallery/SinglePhoto/SinglePhoto';
+import WeddingBreadcrumb from '../../components/WeddingBreadcrumb/WeddingBreadcrumb';
+import { fetchGallery } from '../../store/gallery/slice';
 
 const Home = () => {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(fetchGallery())
-  },[])
-  return (
-    <div>
-      Home  
-    </div>
-  )
-}
+    dispatch(fetchGallery());
+  }, []);
+  return <><WeddingBreadcrumb parent="Gallery" child="wedding ideas" />
+  <Gallery>
 
-export default Home
-  
+  </Gallery>
+  </>;
+};
+
+export default Home;
