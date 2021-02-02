@@ -11,7 +11,7 @@ export const gallerySlice = createSlice({
       state.loading = true;
     },
     fetchGallerySuccess: (state, action) => {
-      state.items = action.payload
+      state.items = [...action.payload]
       state.loading = false
     },
     fetchGalleryFail: (state, action) => {

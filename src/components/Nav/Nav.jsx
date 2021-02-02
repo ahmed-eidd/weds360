@@ -2,11 +2,18 @@ import React, { useState, useEffect } from 'react';
 import styled, { css } from 'styled-components';
 import Logo from '../Logo/Logo';
 import NavItem from '../NavItem/NavItem';
-import * as dropdownitem from './dropdownItems'
+import * as dropdownitem from './dropdownItems';
 const Section = styled.div`
   width: 100%;
   padding-top: 40px;
   z-index: 9998;
+  @media (max-width: 767px) {
+    padding-top: 0;
+    background-color: #fff;
+    height: 60px;
+    z-index: 999999;
+    position: relative;
+  }
 `;
 
 const NavWrapper = styled.div`
@@ -20,6 +27,14 @@ const NavWrapper = styled.div`
   left: 0;
   right: 0;
   margin: auto;
+  @media (max-width: 767px) {
+    width: auto;
+    padding: 2% 2.5%;
+    max-height: 100%;
+    background-color: #fff;
+    position: relative;
+    display: block;
+  }
   ${({ fixed }) =>
     fixed &&
     css`
@@ -42,6 +57,10 @@ const NavItemsWrapper = styled.div`
   align-items: center;
   border-top: solid 1px #000;
   border-bottom: solid 1px #000;
+  @media (max-width: 767px) {
+    border-top: 0;
+    border-bottom: 0;
+  }
   ${({ position, fixed }) => {
     if (position === 'right' && css) {
       if (fixed && css) {
@@ -94,7 +113,7 @@ const Nav = ({ children, position, fixed }) => {
         setNavFixed(false);
       }
     };
-    window.addEventListener('scroll',handleScroll)
+    window.addEventListener('scroll', handleScroll);
   }, []);
 
   return (
@@ -102,22 +121,40 @@ const Nav = ({ children, position, fixed }) => {
       <NavWrapper fixed={navFixed}>
         <NavItemsWrapper position="left" fixed={navFixed}>
           <NavList>
-            <NavItem to="#" fixed={navFixed} dropdownItems={dropdownitem.dropdown1}>
+            <NavItem
+              to="#"
+              fixed={navFixed}
+              dropdownItems={dropdownitem.dropdown1}
+            >
               360 Planner
             </NavItem>
-            <NavItem fixed={navFixed} dropdownItems={dropdownitem.dropdown2}>HER</NavItem>
-            <NavItem fixed={navFixed} dropdownItems={dropdownitem.dropdown3}>HIM</NavItem>
-            <NavItem fixed={navFixed} dropdownItems={dropdownitem.dropdown4}>THE WEDDING</NavItem>
+            <NavItem fixed={navFixed} dropdownItems={dropdownitem.dropdown2}>
+              HER
+            </NavItem>
+            <NavItem fixed={navFixed} dropdownItems={dropdownitem.dropdown3}>
+              HIM
+            </NavItem>
+            <NavItem fixed={navFixed} dropdownItems={dropdownitem.dropdown4}>
+              THE WEDDING
+            </NavItem>
           </NavList>
         </NavItemsWrapper>
         <Logo fixed={navFixed} />
         <NavItemsWrapper position="right" fixed={navFixed}>
           <NavList>
-            <NavItem to="#" fixed={navFixed} dropdownItems={dropdownitem.dropdown5}>
+            <NavItem
+              to="#"
+              fixed={navFixed}
+              dropdownItems={dropdownitem.dropdown5}
+            >
               VENDORS
             </NavItem>
-            <NavItem fixed={navFixed} dropdownItems={dropdownitem.dropdown6}>GALLERY</NavItem>
-            <NavItem fixed={navFixed} dropdownItems={dropdownitem.dropdown7}>IDEAS & MORE</NavItem>
+            <NavItem fixed={navFixed} dropdownItems={dropdownitem.dropdown6}>
+              GALLERY
+            </NavItem>
+            <NavItem fixed={navFixed} dropdownItems={dropdownitem.dropdown7}>
+              IDEAS & MORE
+            </NavItem>
           </NavList>
         </NavItemsWrapper>
       </NavWrapper>

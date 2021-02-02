@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 const Wrapper = styled.div`
   padding: 5px;
   width: 50%;
+  float: left;
   @media (min-width: 992px) {
     width: 33.3333333333%;
   }
