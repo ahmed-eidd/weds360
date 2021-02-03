@@ -13,6 +13,7 @@ const Wrapper = styled.div`
     background-image: none;
     border: 1px solid transparent;
     border-radius: 4px;
+    cursor: pointer;
   }
   .sr-only {
     border: 0;
@@ -36,10 +37,11 @@ const Wrapper = styled.div`
   }
 `;
 
-const BurgerMenu = () => {
+const BurgerMenu = ({clicked}) => {
   return (
     <Wrapper>
       <button
+        onClick={clicked}
         type="button"
         className="btn"
         data-toggle="collapse"

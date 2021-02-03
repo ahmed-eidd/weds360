@@ -2,7 +2,9 @@ import React, { useState, useEffect } from 'react';
 import styled, { css } from 'styled-components';
 import Logo from '../Logo/Logo';
 import NavItem from '../NavItem/NavItem';
+import BurgerMenu from './BurgerMenu/BurgerMenu';
 import * as dropdownitem from './dropdownItems';
+import NavMobile from './NavMobile/NavMobile';
 const Section = styled.div`
   width: 100%;
   padding-top: 40px;
@@ -32,8 +34,8 @@ const NavWrapper = styled.div`
     padding: 2% 2.5%;
     max-height: 100%;
     background-color: #fff;
-    position: relative;
-    display: block;
+    /* position: relative; */
+    /* display: none; */
   }
   ${({ fixed }) =>
     fixed &&
@@ -61,6 +63,7 @@ const NavItemsWrapper = styled.div`
     border-top: 0;
     border-bottom: 0;
   }
+
   ${({ position, fixed }) => {
     if (position === 'right' && css) {
       if (fixed && css) {
@@ -103,11 +106,11 @@ const NavList = styled.ul`
 
 const Nav = ({ children, position, fixed }) => {
   const [navFixed, setNavFixed] = useState(false);
-
+  const [burgerOpen, setBurgerOpen] = useState(false);
   useEffect(() => {
     const handleScroll = () => {
       const offset = window.scrollY;
-      if (offset > 200) {
+      if (offset > 200 && window.innerWidth > 960) {
         setNavFixed(true);
       } else {
         setNavFixed(false);
@@ -157,6 +160,13 @@ const Nav = ({ children, position, fixed }) => {
             </NavItem>
           </NavList>
         </NavItemsWrapper>
+        <BurgerMenu
+          clicked={() => {
+            console.log(burgerOpen);
+            setBurgerOpen(!burgerOpen);
+          }}
+        />
+        {burgerOpen && <NavMobile />}
       </NavWrapper>
     </Section>
   );

@@ -17,6 +17,11 @@ const ImgWrapper = styled.div`
     `height: 60px;
     order: 0;
     justify-content: center;`}
+  @media (max-width: 767px) {
+    width: 100%;
+    display: block;
+    position: relative;
+  }
 `;
 
 const ImgLink = styled(Link)`
@@ -32,12 +37,22 @@ const Img = styled.img`
     css`
       max-height: 40px;
     `}
+
+  @media (max-width: 767px) {
+    max-height: 40px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 5;
+    margin: auto;
+  }
 `;
 
 const Logo = ({ fixed }) => {
   return (
     <ImgWrapper fixed={fixed}>
-      <ImgLink to='/'>
+      <ImgLink to="/">
         <Img src={logo} fixed={fixed} />
       </ImgLink>
     </ImgWrapper>
